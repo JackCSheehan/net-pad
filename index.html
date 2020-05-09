@@ -11,7 +11,7 @@
         <title>Net Pad</title>
     </head>
 
-    <body onload="initialize()">
+    <body onload="initialize()" onbeforeunload="return confirmLeave()">
         <!--Menu bar-->
         <div class="menu-bar">
 
@@ -35,17 +35,17 @@
 
             <!--Text color picker-->
             <div class="spacing"></div>
-            <input class="menu-bar" id="text-color-picker" type="color" onchange="setTextColor()">
+            <input class="menu-bar" id="text-color-picker" type="color" value="#00FF00" onchange="setTextColor()">
             <span class="menu-bar" id="text-color-picker-label">Text Color</span>
 
             <!--Background color picker-->
             <div class="spacing"></div>
-            <input class="menu-bar" id="background-color-picker" type="color" onchange="setBackgroundColor()">
+            <input class="menu-bar" id="background-color-picker" type="color" value="#000000" onchange="setBackgroundColor()">
             <span class="menu-bar" id="background-color-picker-label">Background Color</span>
 
             <!--Font size picker-->
             <div class="spacing"></div>
-            <input class="menu-bar" id="font-size-picker" type="number" min=1 max=200 onchange="setFontSize()">
+            <input class="menu-bar" id="font-size-picker" type="number" min=1 max=200 value=20 onchange="setFontSize()">
             <span class="menu-bar" id="font-size-picker-label">Font Size</span>
 
         </div>
