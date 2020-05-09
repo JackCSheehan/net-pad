@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <link rel="stylesheet" href="styles/style.css">\
+        <script src="scripts/scripts.js"></script>
+
+        <meta charset="UTF-8">
+        <meta name="description" content="Simple, free, open source, online text editor">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Net Pad</title>
+    </head>
+
+    <body onload="initialize()">
+        <!--Menu bar-->
+        <div class="menu-bar">
+
+            <!--Save button-->
+            <div class="spacing"></div>
+            <button class="menu-bar" id="save-button">
+                <img src="images/save.png" id="save-button-icon">
+            </button>
+
+            <!--Upload button-->
+            <div class="spacing"></div>
+            <button class="menu-bar" id="upload-button">
+                <img src="images/upload.png" id="upload-button-icon">
+            </button>
+
+            <!--Text color picker-->
+            <div class="spacing"></div>
+            <input class="menu-bar" id="text-color-picker" type="color" onchange="setTextColor()">
+            <span class="menu-bar" id="text-color-picker-label">Text Color</span>
+
+            <!--Background color picker-->
+            <div class="spacing"></div>
+            <input class="menu-bar" id="background-color-picker" type="color" onchange="setBackgroundColor()">
+            <span class="menu-bar" id="background-color-picker-label">Background Color</span>
+
+            <!--Font size picker-->
+            <div class="spacing"></div>
+            <input class="menu-bar" id="font-size-picker" type="number" min=1 max=200 onchange="setFontSize()">
+            <span class="menu-bar" id="font-size-picker-label">Font Size</span>
+
+        </div>
+
+        <!--Area where user will enter their text-->
+        <div contenteditable="true" spellcheck="false" id="text-area"> 
+
+        </div>
+    </body>
+
+
+</html>

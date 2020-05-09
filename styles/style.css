@@ -1,0 +1,108 @@
+body
+{
+    background-color: black;
+}
+
+/*
+The menu bar is the location of all the buttons above the edit area.
+*/
+.menu-bar
+{
+    background-color: dimgray;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: white;
+    font-family: Lucida Console;
+    font-size: 20px;
+    vertical-align: middle;
+}
+
+.spacing
+{
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/*
+Formatting for the save button icon
+*/
+#save-button-icon
+{
+    width: 40px;
+    height: 40px;
+}
+
+/*
+Formatting for upload button icon
+*/
+#upload-button-icon
+{
+    width: 40px;
+    height: 40px;
+}
+
+/*
+Formatting for save button
+*/
+#save-button
+{
+    border-style: none;
+}
+
+/*
+Formatting for upload button
+*/
+#upload-button
+{
+    border-style: none;
+}
+
+/*
+Formatting for text color picker
+*/
+#text-color-picker
+{
+    width: 40px;
+    height: 40px;
+    border-style: none;
+}
+
+/*
+Formatting for background color picker
+*/
+#background-color-picker
+{
+    width: 40px;
+    height: 40px;
+    border-style: none;
+}
+
+/*
+Formatting for font size picker
+*/
+#font-size-picker
+{
+    text-align: left;
+    width: 70px;
+    height: 40px;
+    border-style: none;
+}
+
+/*
+Formatting of main text area where user can type things.
+*/
+#text-area
+{
+    background-color: black;
+    color: lime;
+    border-style: none;
+    resize: none;
+    width: 100%;
+    height: 200vh;
+    font-size: 20px;
+    font-family: Lucida Console;
+    padding-top: 20px;
+}
