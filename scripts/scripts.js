@@ -54,6 +54,11 @@ function initialize()
             textArea.style.backgroundColor = BACKGROUND_COLOR;
             body.style.backgroundColor = BACKGROUND_COLOR;
             textArea.style.fontSize = FONT_SIZE + "px";
+
+            //Change color pickers and font size picker values
+            textColorPicker.value = TEXT_COLOR;
+            backgroundColorPicker.value = BACKGROUND_COLOR;
+            fontSizePicker.value = FONT_SIZE;
         }
 
         //Set has run before flag
