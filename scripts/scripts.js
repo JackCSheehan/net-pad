@@ -28,17 +28,32 @@ function initialize()
     //First, check for first load
     if (localStorage.getItem("hasCodeRunBefore") === null)
     {
-        //If there are no paramters (indicated by the presense of no text-color parameter), load default values
+        //Set text color picker default value
+        textColorPicker.value = DEFAULT_TEXT_COLOR;  //Default color is lime
+
+        //Set background color picker default value
+        backgroundColorPicker.value = DEFAULT_BACKGROUND_COLOR;
+
+        //Set text size color picker default value
+        fontSizePicker.value = DEFAULT_FONT_SIZE;
+
+        //Set has run before flag
+        localStorage.setItem("hasCodeRunBefore", true);
+    }
+    //If the code has been run before, reset the user's chosen values
+    else
+    {
+        //If there are no URL params, assign settings based on picker values
         if (!URL_PARAMETERS.has(TEXT_COLOR_PARAMETER))
         {
-            //Set text color picker default value
-            textColorPicker.value = DEFAULT_TEXT_COLOR;  //Default color is lime
-
-            //Set background color picker default value
-            backgroundColorPicker.value = DEFAULT_BACKGROUND_COLOR;
-
-            //Set text size color picker default value
-            fontSizePicker.value = DEFAULT_FONT_SIZE;
+            //Get text area element
+            var textArea = document.getElementById("text-area");
+                    
+            //Set the settings for the text areas
+            textArea.style.color = textColorPicker.value;
+            textArea.style.backgroundColor = backgroundColorPicker.value;
+            body.style.backgroundColor = backgroundColorPicker.value;
+            textArea.style.fontSize = fontSizePicker.value + "px";
         }
         //If ther are parameters, read parameter values and assign settings
         else
@@ -60,21 +75,6 @@ function initialize()
             backgroundColorPicker.value = BACKGROUND_COLOR;
             fontSizePicker.value = FONT_SIZE;
         }
-
-        //Set has run before flag
-        localStorage.setItem("hasCodeRunBefore", true);
-    }
-    //If the code has been run before, reset the user's chosen values
-    else
-    {
-        //Get text area element
-        var textArea = document.getElementById("text-area");
-        
-        //Set the settings for the text areas
-        textArea.style.color = textColorPicker.value;
-        textArea.style.backgroundColor = backgroundColorPicker.value;
-        body.style.backgroundColor = backgroundColorPicker.value;
-        textArea.style.fontSize = fontSizePicker.value + "px";
     }
 }
 
