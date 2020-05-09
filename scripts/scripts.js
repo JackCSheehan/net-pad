@@ -21,6 +21,9 @@ function initialize()
     var body = document.getElementsByTagName("body")[0];
     var fontSizePicker = document.getElementById("font-size-picker");
 
+    //Get text area
+    var textArea = document.getElementById("text-area");
+
     //Get URL parameters
     const URL_QUERY = window.location.search;
     const URL_PARAMETERS = new URLSearchParams(URL_QUERY);
@@ -45,10 +48,7 @@ function initialize()
     {
         //If there are no URL params, assign settings based on picker values
         if (!URL_PARAMETERS.has(TEXT_COLOR_PARAMETER))
-        {
-            //Get text area element
-            var textArea = document.getElementById("text-area");
-                    
+        {      
             //Set the settings for the text areas
             textArea.style.color = textColorPicker.value;
             textArea.style.backgroundColor = backgroundColorPicker.value;
