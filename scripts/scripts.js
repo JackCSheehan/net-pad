@@ -3,9 +3,9 @@ const DEFAULT_TEXT_COLOR = "#00FF00";
 const DEFAULT_BACKGROUND_COLOR = "#000000";
 const DEFAULT_FONT_SIZE = 20;
 
-const TEXT_COLOR_PARAMETER = "txt-col";
-const BACKGROUND_COLOR_PARAMETER = "bg-col";
-const FONT_SIZE_PARAMETER = "fnt-size";
+const TEXT_COLOR_PARAMETER = "txtcol";
+const BACKGROUND_COLOR_PARAMETER = "bgcol";
+const FONT_SIZE_PARAMETER = "fntsize";
 
 const SMALLEST_FONT = 1;
 const LARGEST_FONT = 200;
@@ -63,6 +63,10 @@ function initialize()
             const BACKGROUND_COLOR = URL_PARAMETERS.get(BACKGROUND_COLOR_PARAMETER);
             const FONT_SIZE = URL_PARAMETERS.get(FONT_SIZE_PARAMETER);
 
+            console.log(TEXT_COLOR);
+            console.log(BACKGROUND_COLOR);
+            console.log(FONT_SIZE)
+
             //Assign page settings
             //Set the settings for the text areas
             textArea.style.color = TEXT_COLOR;
@@ -73,7 +77,7 @@ function initialize()
             //Change color pickers and font size picker values
             textColorPicker.value = TEXT_COLOR;
             backgroundColorPicker.value = BACKGROUND_COLOR;
-            fontSizePicker.value = FONT_SIZE;
+            fontSizePicker.value = parseInt(FONT_SIZE);
         }
     }
 }
