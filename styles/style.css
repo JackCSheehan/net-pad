@@ -1,3 +1,13 @@
+
+/*
+Variables
+*/
+:root
+{
+    --menu-bar-element-size: 35px;
+}
+
+
 body
 {
     background-color: black;
@@ -9,21 +19,30 @@ The menu bar is the location of all the buttons above the edit area.
 .menu-bar
 {
     background-color: dimgray;
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
     color: white;
     font-family: Lucida Console;
-    font-size: 20px;
+    font-size: 16px;
     vertical-align: middle;
 }
 
 .spacing
 {
     display: inline-block;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
     padding-top: 5px;
     padding-bottom: 5px;
+}
+
+/*
+Formatting new tab button icon
+*/
+#new-tab-button-icon
+{
+    width: var(--menu-bar-element-size);
+    height: var(--menu-bar-element-size);
 }
 
 /*
@@ -31,8 +50,8 @@ Formatting for the save button icon
 */
 #save-button-icon
 {
-    width: 40px;
-    height: 40px;
+    width: var(--menu-bar-element-size);
+    height: var(--menu-bar-element-size);
 }
 
 /*
@@ -40,8 +59,16 @@ Formatting for upload button icon
 */
 #upload-button-icon
 {
-    width: 40px;
-    height: 40px;
+    width: var(--menu-bar-element-size);
+    height: var(--menu-bar-element-size);
+}
+
+/*
+Formatting for new tab button
+*/
+#new-tab-button
+{
+    border-style: none;
 }
 
 /*
@@ -65,8 +92,8 @@ Formatting for text color picker
 */
 #text-color-picker
 {
-    width: 40px;
-    height: 40px;
+    width: var(--menu-bar-element-size);
+    height: var(--menu-bar-element-size);
     border-style: none;
 }
 
@@ -75,8 +102,8 @@ Formatting for background color picker
 */
 #background-color-picker
 {
-    width: 40px;
-    height: 40px;
+    width: var(--menu-bar-element-size);
+    height: var(--menu-bar-element-size);
     border-style: none;
 }
 
@@ -86,9 +113,10 @@ Formatting for font size picker
 #font-size-picker
 {
     text-align: left;
-    width: 70px;
-    height: 40px;
-    border-style: none;
+    width: 50px;
+    height: var(--menu-bar-element-size);
+    border-style: solid;
+    border-width: 1px;
 }
 
 /*
@@ -105,4 +133,14 @@ Formatting of main text area where user can type things.
     font-size: 20px;
     font-family: Lucida Console;
     padding-top: 20px;
+    outline: none;
+}
+
+footer
+{
+    font-size: 8;
+    font-family: Lucida Console;
+    background-color: white;
+    color: black;
+    text-align: center;
 }

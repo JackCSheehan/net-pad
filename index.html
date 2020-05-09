@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
     <head>
-        <link rel="stylesheet" href="styles/style.css">\
+        <link rel="stylesheet" href="styles/style.css">
         <script src="scripts/scripts.js"></script>
 
         <meta charset="UTF-8">
@@ -14,6 +14,12 @@
     <body onload="initialize()">
         <!--Menu bar-->
         <div class="menu-bar">
+
+            <!--New tab button-->
+            <div class="spacing"></div>
+            <button class="menu-bar" id="new-tab-button" onclick="newTab()">
+                <img src="images/plus.png" id="new-tab-button-icon">
+            </button>
 
             <!--Save button-->
             <div class="spacing"></div>
@@ -45,9 +51,10 @@
         </div>
 
         <!--Area where user will enter their text-->
-        <div contenteditable="true" spellcheck="false" id="text-area"> 
+        <div contenteditable="true" spellcheck="false" id="text-area"></div>
 
-        </div>
+        <!--Footer info-->
+        <footer>©2020 Jack Sheehan. Net Pad is open source software whose source code can be found <a href="https://github.com/JackCSheehan/net-pad">here.</a></footer>
     </body>
 
 

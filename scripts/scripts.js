@@ -14,6 +14,7 @@ function initialize()
     //Get input elements
     var textColorPicker = document.getElementById("text-color-picker");
     var backgroundColorPicker = document.getElementById("background-color-picker");
+    var body = document.getElementsByTagName("body")[0];
     var fontSizePicker = document.getElementById("font-size-picker");
 
     //First, check for first load
@@ -40,9 +41,18 @@ function initialize()
         //Set the settings for the text areas
         textArea.style.color = textColorPicker.value;
         textArea.style.backgroundColor = backgroundColorPicker.value;
+        body.style.backgroundColor = backgroundColorPicker.value;
         textArea.style.fontSize = fontSizePicker.value + "px";
     }
     
+}
+
+/*
+Opens a new Net Pad tab.
+*/
+function newTab()
+{
+    window.open("https://jackcsheehan.github.io/net-pad/");
 }
 
 /*
@@ -70,7 +80,10 @@ function setBackgroundColor()
     
     //Set the background color of the main text area to that color
     var textArea = document.getElementById("text-area");
+    var body = document.getElementsByTagName("body")[0];
+
     textArea.style.backgroundColor = selectedColor;
+    body.style.backgroundColor = selectedColor;
 }
 
 /*
