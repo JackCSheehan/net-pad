@@ -25,10 +25,11 @@ function initialize()
     var textArea = document.getElementById("text-area");
 
     //Get URL parameters
-    const URL_PARAMETERS = (new URL(document.location)).searchParams.toString();
+    const CURRENT_URL = new URL(window.location.href);
+    const URL_PARAMETERS = new URLSearchParams(CURRENT_URL.search);
 
     //If there are no query paramters, determine how to load format settings
-    if (URL_PARAMETERS === "")
+    if (URL_PARAMETERS.get(TEXT_COLOR_PARAMETER) == null)
     {
         //Check for first load
         if (localStorage.getItem("hasCodeRunBefore") === null)
