@@ -25,8 +25,7 @@ function initialize()
     var textArea = document.getElementById("text-area");
 
     //Get URL parameters
-    const URL_QUERY = window.location.search;
-    const URL_PARAMETERS = new URLSearchParams(URL_QUERY.substring(1));
+    const URL_PARAMETERS = (new URL(document.location)).searchParams;
 
     //First, check for first load
     if (localStorage.getItem("hasCodeRunBefore") === null)
@@ -63,7 +62,6 @@ function initialize()
             const BACKGROUND_COLOR = URL_PARAMETERS.get(BACKGROUND_COLOR_PARAMETER);
             const FONT_SIZE = URL_PARAMETERS.get(FONT_SIZE_PARAMETER);
 
-            console.log(URL_QUERY);
             console.log(TEXT_COLOR);
             console.log(BACKGROUND_COLOR);
             console.log(FONT_SIZE)
