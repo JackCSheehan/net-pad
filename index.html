@@ -13,7 +13,7 @@
 
     <body onload="initialize()" onbeforeunload="return confirmLeave()">
         <!--Menu bar-->
-        <div class="menu-bar">
+        <div class="menu-bar" id="menu-bar-div">
 
             <!--New tab button-->
             <div class="spacing"></div>
@@ -54,21 +54,23 @@
 
             <!--HTML editor checkbox-->
             <div class="spacing"></div>
-            <input class="menu-bar checkbox" id="html-editor-checkbox" type="checkbox" onchange="">
+            <input class="menu-bar checkbox" id="html-editor-checkbox" type="checkbox" onclick="toggleHTMLEditor()">
             <span class="menu-bar" id="html-editor-checkbox-label">HTML Editor</span>
 
             <!--Code seperator completion checkbox-->
             <div class="spacing"></div>
-            <input class="menu-bar checkbox" id="code-separator-completion-checkbox" type="checkbox" onchange="">
+            <input class="menu-bar checkbox" id="code-separator-completion-checkbox" type="checkbox" onclick="">
             <span class="menu-bar" id="code-separator-completion-checkbox-label">Code Separator Completion</span>
 
         </div>
 
         <!--Area where user will enter their text-->
-        <div contenteditable="true" spellcheck="false" id="text-area"></div>
+        <div id="editing-area" style="display: flex">
+            <textarea contenteditable="true" spellcheck="false" id="text-area" onkeyup="updateHTMLDisplay()"></textarea>
+        </div>
 
         <!--Footer info-->
-        <footer>©2020 Jack Sheehan. Net Pad is open source software whose source code can be found <a href="https://github.com/JackCSheehan/net-pad" target="_blank">here.</a></footer>
+        <div id="cr-info">©2020 Jack Sheehan. Net Pad is open source software whose source code can be found <a href="https://github.com/JackCSheehan/net-pad" target="_blank">here.</a></div>
     </body>
 
 

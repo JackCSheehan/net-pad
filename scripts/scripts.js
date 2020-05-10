@@ -28,7 +28,7 @@ function initialize()
 
     //Get URL parameters
     const CURRENT_URL = new URL(window.location.href);
-    const URL_PARAMETERS = new URLSearchParams(CURRENT_URL.search);
+    const URL_PARAMETERS = new URLSearchParams(CURRENT_URL.searchParams);
 
     //If there are no query paramters, determine how to load format settings
     if (!URL_PARAMETERS.has(TEXT_COLOR_PARAMETER))
@@ -67,6 +67,7 @@ function initialize()
         const FONT_SIZE = URL_PARAMETERS.get(FONT_SIZE_PARAMETER);
 
         console.log(CURRENT_URL);
+        console.log(URL_PARAMETERS);
         console.log(TEXT_COLOR);
         console.log(BACKGROUND_COLOR);
         console.log(FONT_SIZE)
@@ -185,5 +186,55 @@ function setFontSize()
     else
     {
         textArea.style.fontSize = selectedFontSize + "px";
+    }
+}
+
+function updateHTMLDisplay()
+{
+    //Get the HTML display
+    var HTMLDisplay = document.getElementById("HTML-display-area");
+
+    //If the HTML display exists, put the text inside the text area into this element
+    if (HTMLDisplay != null)
+    {  
+        var iframeDocument = HTMLDisplay.contentWindow.document;
+
+        //Replace the inner HTML of the iframe with the inner HTML of the text area
+        iframeDocument.open();
+        iframeDocument.write(document.getElementById("text-area").value);
+        console.log(document.getElementById("text-area").value);
+        iframeDocument.close();
+    }
+}
+
+/*
+This function toggles the live HTML display.
+*/
+function toggleHTMLEditor()
+{
+    const CHECKBOX = document.getElementById("html-editor-checkbox");
+
+    //If the box is checked, add the iframe to the page
+    if (CHECKBOX.checked == true)
+    {
+        //Create iFrame where HTML will be rendered
+        var HTMLDisplayFrame = document.createElement("iframe");
+        HTMLDisplayFrame.id = "HTML-display-area";
+
+        //Adjust the size of the text area to 50%
+        document.getElementById("text-area").style.width = "50%";
+
+        //Append the iframe to the body div
+        document.getElementById("editing-area").appendChild(HTMLDisplayFrame);
+        
+    }
+    else
+    {
+        //Remove the HTML display area
+        var HTMLDisplayFrame = document.getElementById("HTML-display-area");
+        document.getElementById("editing-area").removeChild(HTMLDisplayFrame);
+
+        //Adjust the size of the text area back to 100%
+        document.getElementById("text-area").style.width = "100%";
     }
 }
