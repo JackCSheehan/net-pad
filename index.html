@@ -3,6 +3,7 @@
     <head>
         <link rel="stylesheet" href="styles/style.css">
         <script src="scripts/scripts.js"></script>
+        <script stc="scripts/IncompleteParameterException.js"></script>
 
         <meta charset="UTF-8">
         <meta name="description" content="Simple, free, open source, online text editor">
@@ -68,6 +69,8 @@
         <div id="editing-area" style="display: flex">
             <textarea contenteditable="true" spellcheck="false" id="text-area" onkeyup="updateHTMLDisplay()"></textarea>
         </div>
+
+        <button onclick="getQueryParameters()">PUSH ME</button>
 
         <!--Footer info-->
         <div id="cr-info">©2020 Jack Sheehan. Net Pad is open source software whose source code can be found <a href="https://github.com/JackCSheehan/net-pad" target="_blank">here.</a></div>

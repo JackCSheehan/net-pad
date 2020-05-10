@@ -27,11 +27,10 @@ function initialize()
     var textArea = document.getElementById("text-area");
 
     //Get URL parameters
-    const CURRENT_URL = new URL(window.location.href);
-    const URL_PARAMETERS = new URLSearchParams(CURRENT_URL.searchParams);
+    var URLParameters = getQueryParameters();
 
     //If there are no query paramters, determine how to load format settings
-    if (!URL_PARAMETERS.has(TEXT_COLOR_PARAMETER))
+    if (URLParameters === null)
     {
         //Check for first load
         if (localStorage.getItem("hasCodeRunBefore") === null)
@@ -62,33 +61,84 @@ function initialize()
     else
     {
         //Get values from URL parameters
-        const TEXT_COLOR = URL_PARAMETERS.get(TEXT_COLOR_PARAMETER);
-        const BACKGROUND_COLOR = URL_PARAMETERS.get(BACKGROUND_COLOR_PARAMETER);
-        const FONT_SIZE = URL_PARAMETERS.get(FONT_SIZE_PARAMETER);
+        var textColor = URLParameters[TEXT_COLOR_PARAMETER];
+        var backgroundColor = URLParameters[BACKGROUND_COLOR_PARAMETER];
+        var fontSize = URLParameters[FONT_SIZE_PARAMETER];
 
-        console.log(CURRENT_URL);
-        console.log(URL_PARAMETERS);
-        console.log(TEXT_COLOR);
-        console.log(BACKGROUND_COLOR);
-        console.log(FONT_SIZE)
+        console.log(URLParameters);
+        console.log(textColor);
+        console.log(backgroundColor);
+        console.log(fontSize)
 
         //Assign page settings
         //Set the settings for the text areas
-        textArea.style.color = TEXT_COLOR;
-        textArea.style.backgroundColor = BACKGROUND_COLOR;
-        body.style.backgroundColor = BACKGROUND_COLOR;
-        textArea.style.fontSize = FONT_SIZE + "px";
+        textArea.style.color = textColor;
+        textArea.style.backgroundColor = backgroundColor;
+        body.style.backgroundColor = backgroundColor;
+        textArea.style.fontSize = fontSize + "px";
 
         //Change color pickers and font size picker values
-        textColorPicker.value = TEXT_COLOR;
-        backgroundColorPicker.value = BACKGROUND_COLOR;
-        fontSizePicker.value = parseInt(FONT_SIZE);
+        textColorPicker.value = textColor;
+        backgroundColorPicker.value = backgroundColor;
+        fontSizePicker.value = parseInt(fontSize);
     }
 
     //Set document name input to default value; page title will remain defaul "Net Pad" until user changes it
     documentNameInput.value = DEFAULT_DOCUMENT_NAME;
 }
 
+/*
+This function gets the query parameters from the current URL and returns a map of type paramter : value.
+*/
+function getQueryParameters()
+{
+    var parameters = new Map();             //Map of parsed parameters
+    var currentURL = window.location.href;  //Current URL of page
+    var splitURL;                           //The URL split at "?"
+    var unparsedParameters;                 //The parameters that have yet to be parsed from the URL
+    var splitParameters;                    //Parameters split at the "&"
+
+    //Split the URL at the "?" marker
+    splitURL = currentURL.split("?")
+
+    //If there are parameters to parse, then parse them
+    if (splitURL.length > 1)
+    {
+        unparsedParameters = splitURL[1];
+
+        //Split parameters at the "&" separator
+        splitParameters = unparsedParameters.split("&");
+
+        //Iterate through each parameter and value in the split parameters and add them to the map
+        try
+        {
+            for (var counter = 0; counter < splitParameters.length; counter++)
+            {
+                //Split current parameter at the "=" to distinguish between paramter and value
+                var currentParamater = splitParameters[counter].split("=");
+
+                //Add the parameter and value to the map
+                parameters.set(currentParameter[0], currentParamater[1]);
+            }
+        }
+        //If there is an incomplete paramter, print the error to the console
+        catch (error)
+        {
+            console.error("Incomplete Parameter");
+        }
+    }
+    //If there aren't parameters to parse, return null
+    else
+    {
+        return null;
+    }
+
+    return parameters;
+}
+
+/*
+Call when user tries to exit page.
+*/
 function confirmLeave()
 {
     var confirmStatus = confirm("Are you sure you want to leave the page? Unsaved data will be lost.");
