@@ -2,7 +2,7 @@
 const DEFAULT_TEXT_COLOR = "#00FF00";
 const DEFAULT_BACKGROUND_COLOR = "#000000";
 const DEFAULT_FONT_SIZE = 20;
-const DEFAULT_DOCUMENT_NAME = "New document";
+const DEFAULT_DOCUMENT_NAME = "New Document";
 
 const TEXT_COLOR_PARAMETER = "txtcol";
 const BACKGROUND_COLOR_PARAMETER = "bgcol";
@@ -31,7 +31,7 @@ function initialize()
     const URL_PARAMETERS = new URLSearchParams(CURRENT_URL.search);
 
     //If there are no query paramters, determine how to load format settings
-    if (URL_PARAMETERS.get(TEXT_COLOR_PARAMETER) == null)
+    if !(URL_PARAMETERS.has(TEXT_COLOR_PARAMETER))
     {
         //Check for first load
         if (localStorage.getItem("hasCodeRunBefore") === null)
@@ -122,7 +122,7 @@ function newTab()
                              + FONT_SIZE_PARAMETER + "=" + FONT_SIZE;
 
     //Create URL based on custom query string
-    const URL = "https://jackcsheehan.github.io/net-pad/" + QUERY_STRING;
+    const URL = "https://jackcsheehan.github.io/net-pad" + QUERY_STRING;
 
     window.open(URL);
 }

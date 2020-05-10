@@ -15,10 +15,6 @@
         <!--Menu bar-->
         <div class="menu-bar">
 
-            <!--Document name button-->
-            <div class="spacing"></div>
-            <input class="menu-bar" id="document-name-input" type="text" placeholder="Document name" title="Document name" onblur="setTitleText()">
-
             <!--New tab button-->
             <div class="spacing"></div>
             <button class="menu-bar" id="new-tab-button" title="New tab" onclick="newTab()">
@@ -37,6 +33,10 @@
                 <img src="images/upload.png" id="upload-button-icon">
             </button>
 
+            <!--Document name button-->
+            <div class="spacing"></div>
+            <input class="menu-bar" id="document-name-input" type="text" placeholder="Document Name" title="Document name" onblur="setTitleText()">
+
             <!--Text color picker-->
             <div class="spacing"></div>
             <input class="menu-bar" id="text-color-picker" type="color" value="#00FF00" onchange="setTextColor()">
@@ -51,6 +51,16 @@
             <div class="spacing"></div>
             <input class="menu-bar" id="font-size-picker" type="number" min=1 max=200 value=20 onchange="setFontSize()">
             <span class="menu-bar" id="font-size-picker-label">Font Size</span>
+
+            <!--HTML editor checkbox-->
+            <div class="spacing"></div>
+            <input class="menu-bar checkbox" id="html-editor-checkbox" type="checkbox" onchange="">
+            <span class="menu-bar" id="html-editor-checkbox-label">HTML Editor</span>
+
+            <!--Code seperator completion checkbox-->
+            <div class="spacing"></div>
+            <input class="menu-bar checkbox" id="code-separator-completion-checkbox" type="checkbox" onchange="">
+            <span class="menu-bar" id="code-separator-completion-checkbox-label">Code Separator Completion</span>
 
         </div>
 

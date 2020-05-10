@@ -127,6 +127,14 @@ Formatting for font size picker
 }
 
 /*
+Formatting for checkbox class
+*/
+.checkbox
+{
+    transform: scale(1.2);
+}
+
+/*
 Formatting of main text area where user can type things.
 */
 #text-area
