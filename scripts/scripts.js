@@ -28,7 +28,7 @@ function initialize()
     const URL_PARAMETERS = (new URL(document.location)).searchParams.toString();
 
     //If there are no query paramters, determine how to load format settings
-    if (!URL_PARAMETERS.has(TEXT_COLOR_PARAMETER))
+    if (URL_PARAMETERS === "")
     {
         //Check for first load
         if (localStorage.getItem("hasCodeRunBefore") === null)
