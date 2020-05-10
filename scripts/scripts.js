@@ -25,28 +25,28 @@ function initialize()
     var textArea = document.getElementById("text-area");
 
     //Get URL parameters
-    const URL_PARAMETERS = (new URL(document.location)).searchParams;
+    const URL_PARAMETERS = (new URL(document.location)).searchParams.toString();
 
-    //First, check for first load
-    if (localStorage.getItem("hasCodeRunBefore") === null)
+    //If there are no query paramters, determine how to load format settings
+    if (!URL_PARAMETERS.has(TEXT_COLOR_PARAMETER))
     {
-        //Set text color picker default value
-        textColorPicker.value = DEFAULT_TEXT_COLOR;  //Default color is lime
+        //Check for first load
+        if (localStorage.getItem("hasCodeRunBefore") === null)
+        {
+            //Set text color picker default value
+            textColorPicker.value = DEFAULT_TEXT_COLOR;  //Default color is lime
 
-        //Set background color picker default value
-        backgroundColorPicker.value = DEFAULT_BACKGROUND_COLOR;
+            //Set background color picker default value
+            backgroundColorPicker.value = DEFAULT_BACKGROUND_COLOR;
 
-        //Set text size color picker default value
-        fontSizePicker.value = DEFAULT_FONT_SIZE;
+            //Set text size color picker default value
+            fontSizePicker.value = DEFAULT_FONT_SIZE;
 
-        //Set has run before flag
-        localStorage.setItem("hasCodeRunBefore", true);
-    }
-    //If the code has been run before, reset the user's chosen values
-    else
-    {
-        //If there are no URL params, assign settings based on picker values
-        if (!URL_PARAMETERS.has(TEXT_COLOR_PARAMETER))
+            //Set has run before flag
+            localStorage.setItem("hasCodeRunBefore", true);
+        }
+        //If the code has been run before, reset the user's chosen values
+        else
         {      
             //Set the settings for the text areas
             textArea.style.color = textColorPicker.value;
@@ -54,30 +54,30 @@ function initialize()
             body.style.backgroundColor = backgroundColorPicker.value;
             textArea.style.fontSize = fontSizePicker.value + "px";
         }
-        //If ther are parameters, read parameter values and assign settings
-        else
-        {
-            //Get values from URL parameters
-            const TEXT_COLOR = URL_PARAMETERS.get(TEXT_COLOR_PARAMETER);
-            const BACKGROUND_COLOR = URL_PARAMETERS.get(BACKGROUND_COLOR_PARAMETER);
-            const FONT_SIZE = URL_PARAMETERS.get(FONT_SIZE_PARAMETER);
+    }
+    //If there are URL parameters, set the format settings
+    else
+    {
+        //Get values from URL parameters
+        const TEXT_COLOR = URL_PARAMETERS.get(TEXT_COLOR_PARAMETER);
+        const BACKGROUND_COLOR = URL_PARAMETERS.get(BACKGROUND_COLOR_PARAMETER);
+        const FONT_SIZE = URL_PARAMETERS.get(FONT_SIZE_PARAMETER);
 
-            console.log(TEXT_COLOR);
-            console.log(BACKGROUND_COLOR);
-            console.log(FONT_SIZE)
+        console.log(TEXT_COLOR);
+        console.log(BACKGROUND_COLOR);
+        console.log(FONT_SIZE)
 
-            //Assign page settings
-            //Set the settings for the text areas
-            textArea.style.color = TEXT_COLOR;
-            textArea.style.backgroundColor = BACKGROUND_COLOR;
-            body.style.backgroundColor = BACKGROUND_COLOR;
-            textArea.style.fontSize = FONT_SIZE + "px";
+        //Assign page settings
+        //Set the settings for the text areas
+        textArea.style.color = TEXT_COLOR;
+        textArea.style.backgroundColor = BACKGROUND_COLOR;
+        body.style.backgroundColor = BACKGROUND_COLOR;
+        textArea.style.fontSize = FONT_SIZE + "px";
 
-            //Change color pickers and font size picker values
-            textColorPicker.value = TEXT_COLOR;
-            backgroundColorPicker.value = BACKGROUND_COLOR;
-            fontSizePicker.value = parseInt(FONT_SIZE);
-        }
+        //Change color pickers and font size picker values
+        textColorPicker.value = TEXT_COLOR;
+        backgroundColorPicker.value = BACKGROUND_COLOR;
+        fontSizePicker.value = parseInt(FONT_SIZE);
     }
 }
 
