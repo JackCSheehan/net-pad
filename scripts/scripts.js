@@ -31,7 +31,7 @@ function initialize()
     const URL_PARAMETERS = new URLSearchParams(CURRENT_URL.search);
 
     //If there are no query paramters, determine how to load format settings
-    if !(URL_PARAMETERS.has(TEXT_COLOR_PARAMETER))
+    if (!URL_PARAMETERS.has(TEXT_COLOR_PARAMETER))
     {
         //Check for first load
         if (localStorage.getItem("hasCodeRunBefore") === null)
@@ -122,7 +122,7 @@ function newTab()
                              + FONT_SIZE_PARAMETER + "=" + FONT_SIZE;
 
     //Create URL based on custom query string
-    const URL = "https://jackcsheehan.github.io/net-pad" + QUERY_STRING;
+    const URL = "https://jackcsheehan.github.io/net-pad/index.html" + QUERY_STRING;
 
     window.open(URL);
 }
