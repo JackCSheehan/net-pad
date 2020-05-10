@@ -36,6 +36,14 @@ The menu bar is the location of all the buttons above the edit area.
 }
 
 /*
+Formatting for document name input
+*/
+#document-name-input
+{
+    vertical-align: middle;
+}
+
+/*
 Formatting new tab button icon
 */
 #new-tab-button-icon

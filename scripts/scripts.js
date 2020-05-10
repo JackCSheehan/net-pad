@@ -2,6 +2,7 @@
 const DEFAULT_TEXT_COLOR = "#00FF00";
 const DEFAULT_BACKGROUND_COLOR = "#000000";
 const DEFAULT_FONT_SIZE = 20;
+const DEFAULT_DOCUMENT_NAME = "New document";
 
 const TEXT_COLOR_PARAMETER = "txtcol";
 const BACKGROUND_COLOR_PARAMETER = "bgcol";
@@ -16,6 +17,7 @@ This function sets initial value for format settings and runs an initialization 
 function initialize()
 {
     //Get input elements
+    var documentNameInput = document.getElementById("document-name-input");
     var textColorPicker = document.getElementById("text-color-picker");
     var backgroundColorPicker = document.getElementById("background-color-picker");
     var body = document.getElementsByTagName("body")[0];
@@ -64,6 +66,7 @@ function initialize()
         const BACKGROUND_COLOR = URL_PARAMETERS.get(BACKGROUND_COLOR_PARAMETER);
         const FONT_SIZE = URL_PARAMETERS.get(FONT_SIZE_PARAMETER);
 
+        console.log(CURRENT_URL);
         console.log(TEXT_COLOR);
         console.log(BACKGROUND_COLOR);
         console.log(FONT_SIZE)
@@ -80,12 +83,27 @@ function initialize()
         backgroundColorPicker.value = BACKGROUND_COLOR;
         fontSizePicker.value = parseInt(FONT_SIZE);
     }
+
+    //Set document name input to default value; page title will remain defaul "Net Pad" until user changes it
+    documentNameInput.value = DEFAULT_DOCUMENT_NAME;
 }
 
 function confirmLeave()
 {
     var confirmStatus = confirm("Are you sure you want to leave the page? Unsaved data will be lost.");
     return confirmStatus;
+}
+
+/*
+Set the title of the webpage to the string typed into the document name input.
+*/
+function setTitleText()
+{
+    //Get the text from the input box
+    const DOCUMENT_NAME = document.getElementById("document-name-input").value;
+
+    //Set the page title
+    document.title = DOCUMENT_NAME;
 }
 
 /*
