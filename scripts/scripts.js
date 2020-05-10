@@ -113,14 +113,18 @@ Opens a new Net Pad tab.
 function newTab()
 {
     //Gather data from web page
-    const TEXT_COLOR = document.getElementById("text-color-picker").value;
-    const BACKGROUND_COLOR = document.getElementById("background-color-picker").value;
-    const FONT_SIZE = document.getElementById("font-size-picker").value;
+    var TEXT_COLOR = document.getElementById("text-color-picker").value;
+    var BACKGROUND_COLOR = document.getElementById("background-color-picker").value;
+    var FONT_SIZE = document.getElementById("font-size-picker").value;
 
     //Create a custom query string that indicates the user's format settings
     const QUERY_STRING = "?" + TEXT_COLOR_PARAMETER + "=" + TEXT_COLOR + "&"
                              + BACKGROUND_COLOR_PARAMETER + "=" + BACKGROUND_COLOR + "&"
                              + FONT_SIZE_PARAMETER + "=" + FONT_SIZE;
+
+    console.log(TEXT_COLOR);
+    console.log(BACKGROUND_COLOR);
+    console.log(FONT_SIZE)
 
     //Create URL based on custom query string
     const URL = "https://jackcsheehan.github.io/net-pad/index.html" + QUERY_STRING;
