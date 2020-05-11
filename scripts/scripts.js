@@ -11,6 +11,10 @@ const FONT_SIZE_PARAMETER = "fntsize";
 const SMALLEST_FONT = 1;
 const LARGEST_FONT = 200;
 
+//Define static map used to auto fill code separators
+const SEPARATOR_CHARACTERS = [["(", ")"], ["[", "]"], ["{", "}"], ["<", ">"], ["\"", "\""], ["/*", "*/"], ["'", "'"]];
+const SEPARATOR_MAP = new Map(SEPARATOR_CHARACTERS);
+
 /*
 This function sets initial value for format settings and runs an initialization code needed.
 */
@@ -238,6 +242,9 @@ function setFontSize()
     }
 }
 
+/*
+Updates the HTML display to show the HTML typed into the text area.
+*/
 function updateHTMLDisplay()
 {
     //Get the HTML display
@@ -251,8 +258,36 @@ function updateHTMLDisplay()
         //Replace the inner HTML of the iframe with the inner HTML of the text area
         iframeDocument.open();
         iframeDocument.write(document.getElementById("text-area").value);
-        console.log(document.getElementById("text-area").value);
         iframeDocument.close();
+    }
+}
+
+/*
+Checks the current character at caret to see if it is a character that can be auto filled.
+*/
+function checkForCodeCompletion(event)
+{
+    //Check to make sure the code completion checkbox is checked before trying to complete any code
+    if (document.getElementById("code-separator-completion-checkbox").checked === true)
+    {
+        //Get text area
+        var textArea = document.getElementById("text-area");
+
+        //Get the index of the insertion pointer
+        var currentSelectionIndex = textArea.selectionStart - 1;
+        
+        //Get the character at the current index
+        var currentCharacter = textArea.value.charAt(currentSelectionIndex)
+
+        //If the character just typed is a completable character, complete it
+        if (SEPARATOR_MAP.has(event.key))
+        {
+            //Write the corresponding character
+            textArea.value += SEPARATOR_MAP.get(currentCharacter);
+
+            //Move caret back one character
+            textArea.selectionEnd = currentSelectionIndex + 1;
+        }
     }
 }
 
