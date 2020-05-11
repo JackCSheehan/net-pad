@@ -65,10 +65,6 @@ function initialize()
         var backgroundColor = URLParameters.get(BACKGROUND_COLOR_PARAMETER);
         var fontSize = URLParameters.get(FONT_SIZE_PARAMETER);
 
-        console.debug(textColor);
-        console.debug(backgroundColor);
-        console.debug(fontSize);
-
         //Assign page settings
         //Set the settings for the text areas
         textArea.style.color = textColor;
@@ -84,6 +80,10 @@ function initialize()
 
     //Set document name input to default value; page title will remain default "Net Pad" until user changes it
     documentNameInput.value = DEFAULT_DOCUMENT_NAME;
+
+    //Uncheck HTML editor and code completion checkboxes
+    document.getElementById("html-editor-checkbox").checked = false;
+    document.getElementById("code-separator-completion-checkbox").checked = false;
 }
 
 /*
@@ -115,7 +115,7 @@ function getQueryParameters()
             {
                 //Split current parameter at the "=" to distinguish between paramter and value
                 var currentParameter = splitParameters[counter].split("=");
-
+                console.debug(currentParameter);
                 //Add the parameter and value to the map
                 parameters.set(currentParameter[0], currentParameter[1]);
             }
