@@ -61,9 +61,9 @@ function initialize()
     else
     {
         //Get values from URL parameters
-        var textColor = URLParameters[TEXT_COLOR_PARAMETER];
-        var backgroundColor = URLParameters[BACKGROUND_COLOR_PARAMETER];
-        var fontSize = URLParameters[FONT_SIZE_PARAMETER];
+        var textColor = URLParameters.get(TEXT_COLOR_PARAMETER);
+        var backgroundColor = URLParameters.get(BACKGROUND_COLOR_PARAMETER);
+        var fontSize = URLParameters.get(FONT_SIZE_PARAMETER);
 
         console.debug(textColor);
         console.debug(backgroundColor);
