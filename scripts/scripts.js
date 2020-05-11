@@ -65,11 +65,6 @@ function initialize()
         var backgroundColor = URLParameters[BACKGROUND_COLOR_PARAMETER];
         var fontSize = URLParameters[FONT_SIZE_PARAMETER];
 
-        console.log(URLParameters);
-        console.log(textColor);
-        console.log(backgroundColor);
-        console.log(fontSize)
-
         //Assign page settings
         //Set the settings for the text areas
         textArea.style.color = textColor;
@@ -115,10 +110,10 @@ function getQueryParameters()
             for (var counter = 0; counter < splitParameters.length; counter++)
             {
                 //Split current parameter at the "=" to distinguish between paramter and value
-                var currentParamater = splitParameters[counter].split("=");
+                var currentParameter = splitParameters[counter].split("=");
 
                 //Add the parameter and value to the map
-                parameters.set(currentParameter[0], currentParamater[1]);
+                parameters.set(currentParameter[0], currentParameter[1]);
             }
         }
         //If there is an incomplete paramter, print the error to the console
@@ -171,10 +166,6 @@ function newTab()
     const QUERY_STRING = "?" + TEXT_COLOR_PARAMETER + "=" + TEXT_COLOR + "&"
                              + BACKGROUND_COLOR_PARAMETER + "=" + BACKGROUND_COLOR + "&"
                              + FONT_SIZE_PARAMETER + "=" + FONT_SIZE;
-
-    console.log(TEXT_COLOR);
-    console.log(BACKGROUND_COLOR);
-    console.log(FONT_SIZE)
 
     //Create URL based on custom query string
     const URL = "https://jackcsheehan.github.io/net-pad/index.html" + QUERY_STRING;
