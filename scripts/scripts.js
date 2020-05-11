@@ -29,7 +29,7 @@ function initialize()
     //Get URL parameters
     var URLParameters = getQueryParameters();
 
-    //If there are no query paramters, determine how to load format settings
+    //If there are no query parameters, determine how to load format settings
     if (URLParameters === null)
     {
         //Check for first load
@@ -65,6 +65,10 @@ function initialize()
         var backgroundColor = URLParameters[BACKGROUND_COLOR_PARAMETER];
         var fontSize = URLParameters[FONT_SIZE_PARAMETER];
 
+        console.debug(textColor);
+        console.debug(backgroundColor);
+        console.debug(fontSize);
+
         //Assign page settings
         //Set the settings for the text areas
         textArea.style.color = textColor;
@@ -78,7 +82,7 @@ function initialize()
         fontSizePicker.value = parseInt(fontSize);
     }
 
-    //Set document name input to default value; page title will remain defaul "Net Pad" until user changes it
+    //Set document name input to default value; page title will remain default "Net Pad" until user changes it
     documentNameInput.value = DEFAULT_DOCUMENT_NAME;
 }
 
