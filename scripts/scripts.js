@@ -92,6 +92,7 @@ function initialize()
     //Add event listeners
     textArea.addEventListener("keyup", updateHTMLDisplay);
     textArea.addEventListener("keydown", checkForCodeCompletion);
+    textArea.addEventListener("keydown", checkForTabKey);
 }
 
 /*
@@ -321,5 +322,33 @@ function toggleHTMLEditor()
 
         //Adjust the size of the text area back to 100%
         document.getElementById("text-area").style.width = "100%";
+    }
+}
+
+/*
+If the user presses the tab key, this function will refocus the text area and move the caret forward by a tab character.
+*/
+function checkForTabKey(event)
+{
+    //If the key pressed was the tab key, append a \t to the text area
+    if (event.which === 9)
+    {
+        //Prevent tab from tabbing to next element
+        event.preventDefault();
+
+        //Get text area
+        var textArea = document.getElementById("text-area");
+
+        //Get the index of the insertion pointer
+        var currentSelectionIndex = textArea.selectionStart;
+
+        //Get text area text
+        var text = textArea.value;
+
+        //Insert beginning of text area, insert \t, insert end of text area
+        textArea.value = text.substring(0, currentSelectionIndex) + "\t" + text.substring(currentSelectionIndex, text.length);
+    
+        //Move caret back one character
+        textArea.selectionEnd = currentSelectionIndex + 1;
     }
 }
