@@ -244,7 +244,7 @@ function uploadFile()
     //Add the file, click it, remove it
     document.body.appendChild(inputElement);
     inputElement.click();
-    
+    document.body.removeChild(inputElement);
 
     //Wait for the user to enter their file before trying to get the files from it
     inputElement.onchange = function()
@@ -258,15 +258,22 @@ function uploadFile()
         //Get the contents of the file as a promise
         var fileTextPromise = file.text();
 
+        //Get the loading indicator element and show it
+        var loadingIndicator = document.getElementById("loading-indicator");
+        loadingIndicator.style.visibility = "visible";
+
         //Once the promise is filled, write the text to the text area
         fileTextPromise.then(function(data)
         {
             //Set the text area to be the text read from the user's file
             document.getElementById("text-area").value = data;
-        }); 
-    }
 
-    document.body.removeChild(inputElement);
+            //Once finished, hide the indicator again
+            loadingIndicator.style.visibility = "hidden";
+        });
+        
+        
+    }
 }
 
 /*
