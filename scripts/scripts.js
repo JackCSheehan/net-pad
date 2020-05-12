@@ -89,10 +89,23 @@ function initialize()
     document.getElementById("html-editor-checkbox").checked = false;
     document.getElementById("code-separator-completion-checkbox").checked = false;
 
-    //Add event listeners
+    //Add event listeners for text area utilities
     textArea.addEventListener("keyup", updateHTMLDisplay);
     textArea.addEventListener("keydown", checkForCodeCompletion);
     textArea.addEventListener("keydown", checkForTabKey);
+
+    //Add event listener for the format options dropdown box
+    document.getElementById("format-options-dropdown-button").addEventListener("click", function()
+    {
+        dropdown("format-dropdown-items");
+    });
+
+    //Add event listner for coding options dropdown box
+    document.getElementById("coding-options-dropdown-button").addEventListener("click", function()
+    {
+        dropdown("coding-dropdown-items");
+    });
+
 }
 
 /*
@@ -353,5 +366,24 @@ function checkForTabKey(event)
     
         //Move caret back one character
         textArea.selectionEnd = currentSelectionIndex + 1;
+    }
+}
+
+/*
+This function takes the ID of the dropdown items and sets their display so that the menu is displayed.
+*/
+function dropdown(dropdownItemsId)
+{
+    //Get dropdown
+    var dropdownItems = document.getElementById(dropdownItemsId);
+
+    //Check current state of dropdown to toggle it
+    if (dropdownItems.style.display === "none")
+    {
+        dropdownItems.style.display = "block";
+    }
+    else
+    {
+        dropdownItems.style.display = "none";
     }
 }
