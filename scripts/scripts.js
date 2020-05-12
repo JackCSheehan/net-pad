@@ -200,6 +200,76 @@ function newTab()
 }
 
 /*
+This function saves the text in the text area to a file on the user's machine
+*/
+function saveTextAreaToFile()
+{
+    //Get text area text
+    var text = document.getElementById("text-area").value;
+
+    //Get name of file from the text box
+    var fileName = document.getElementById("document-name-input").value;
+
+    //Create a blob to save the data
+    var blob = new Blob([text], {type : "text/plain"});
+    
+    //Create a link to download the file
+    var downloadElement = document.createElement("a");
+
+    //Creat URL from blob
+    downloadElement.href = window.URL.createObjectURL(blob);
+
+    //Set the download to the generated file name
+    downloadElement.download = fileName;
+    
+    //So no new window appears
+    downloadElement.target = "_blank";
+
+    //Append child, click the linnk, remove the child
+    document.body.appendChild(downloadElement);
+    downloadElement.click();
+    document.body.removeChild(downloadElement);
+}
+
+/*
+This function prompts the user with a file chooser and let's them upload a file whose contents will be put into 
+the text area.
+*/
+function uploadFile()
+{
+    //Create an input element
+    var inputElement = document.createElement("input");
+    inputElement.setAttribute("type", "file");
+
+    //Add the file, click it, remove it
+    document.body.appendChild(inputElement);
+    inputElement.click();
+    
+
+    //Wait for the user to enter their file before trying to get the files from it
+    inputElement.onchange = function()
+    {
+        //Get the files that the user entered and then get only the first one
+        var file = inputElement.files[0];
+
+        //Get the name of the file and set it to the document name element value
+        document.getElementById("document-name-input").value = file.name;
+
+        //Get the contents of the file as a promise
+        var fileTextPromise = file.text();
+
+        //Once the promise is filled, write the text to the text area
+        fileTextPromise.then(function(data)
+        {
+            //Set the text area to be the text read from the user's file
+            document.getElementById("text-area").value = data;
+        }); 
+    }
+
+    document.body.removeChild(inputElement);
+}
+
+/*
 This function sets the text color of the main text area to the color set in the color picker.
 */
 function setTextColor()
