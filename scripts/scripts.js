@@ -87,7 +87,7 @@ function initialize()
 
     //Uncheck HTML editor and code completion checkboxes
     document.getElementById("html-editor-checkbox").checked = false;
-    document.getElementById("code-separator-completion-checkbox").checked = false;
+    //document.getElementById("code-separator-completion-checkbox").checked = false;
 
     //Add event listeners for text area utilities
     textArea.addEventListener("keyup", updateHTMLDisplay);
@@ -361,14 +361,20 @@ function checkForCodeCompletion(event)
         //If the character just typed is a completable character, complete it
         if (SEPARATOR_MAP.has(event.key))
         {
+            //Prevent the keystroke from being printed in the text area
+            event.preventDefault();
+
             //Get text area
             var textArea = document.getElementById("text-area");
 
             //Get the index of the insertion pointer
-            var currentSelectionIndex = textArea.selectionStart - 1;
+            var currentSelectionIndex = textArea.selectionEnd;
 
-            //Write the corresponding character
-            textArea.value += SEPARATOR_MAP.get(event.key);
+            //Get the text in the text area
+            var text = textArea.value;
+
+            //Insert beginning of text area, beginning separator, ending seperator, and end of text area
+            textArea.value = text.substring(0, currentSelectionIndex) + event.key + SEPARATOR_MAP.get(event.key) + text.substring(currentSelectionIndex, text.length);
 
             //Move caret back one character
             textArea.selectionEnd = currentSelectionIndex + 1;
