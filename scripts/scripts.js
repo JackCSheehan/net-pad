@@ -88,6 +88,10 @@ function initialize()
     //Uncheck HTML editor and code completion checkboxes
     document.getElementById("html-editor-checkbox").checked = false;
     document.getElementById("code-separator-completion-checkbox").checked = false;
+
+    //Add event listeners
+    textArea.addEventListener("keyup", updateHTMLDisplay);
+    textArea.addEventListener("keydown", checkForCodeCompletion);
 }
 
 /*
@@ -270,20 +274,17 @@ function checkForCodeCompletion(event)
     //Check to make sure the code completion checkbox is checked before trying to complete any code
     if (document.getElementById("code-separator-completion-checkbox").checked === true)
     {
-        //Get text area
-        var textArea = document.getElementById("text-area");
-
-        //Get the index of the insertion pointer
-        var currentSelectionIndex = textArea.selectionStart - 1;
-        
-        //Get the character at the current index
-        var currentCharacter = textArea.value.charAt(currentSelectionIndex)
-
         //If the character just typed is a completable character, complete it
         if (SEPARATOR_MAP.has(event.key))
         {
+            //Get text area
+            var textArea = document.getElementById("text-area");
+
+            //Get the index of the insertion pointer
+            var currentSelectionIndex = textArea.selectionStart - 1;
+
             //Write the corresponding character
-            textArea.value += SEPARATOR_MAP.get(currentCharacter);
+            textArea.value += SEPARATOR_MAP.get(event.key);
 
             //Move caret back one character
             textArea.selectionEnd = currentSelectionIndex + 1;
