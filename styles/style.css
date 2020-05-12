@@ -161,6 +161,7 @@ Formatting of main text area where user can type things.
     font-family: Lucida Console;
     padding-top: 20px;
     outline: none;
+    white-space: nowrap;
 }
 
 #HTML-display-area

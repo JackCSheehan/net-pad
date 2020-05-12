@@ -313,6 +313,9 @@ function toggleHTMLEditor()
         //Append the iframe to the body div
         document.getElementById("editing-area").appendChild(HTMLDisplayFrame);
         
+        //Update the display so the user doesn't have to press a key to update it
+        updateHTMLDisplay();
+
     }
     else
     {
