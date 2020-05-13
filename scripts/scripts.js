@@ -94,17 +94,29 @@ function initialize()
     textArea.addEventListener("keydown", checkForCodeCompletion);
     textArea.addEventListener("keydown", checkForTabKey);
 
+    //Get dropdown elements
+    var formatOptionsDropdown = document.getElementById("format-options-dropdown-button");
+    var codingOptionsDropdown = document.getElementById("coding-options-dropdown-button");
+
     //Add event listener for the format options dropdown box
-    document.getElementById("format-options-dropdown-button").addEventListener("click", function()
+    formatOptionsDropdown.addEventListener("click", function()
     {
         dropdown("format-dropdown-items");
     });
 
     //Add event listner for coding options dropdown box
-    document.getElementById("coding-options-dropdown-button").addEventListener("click", function()
+    codingOptionsDropdown.addEventListener("click", function()
     {
         dropdown("coding-dropdown-items");
     });
+
+    //Make the dropdown menus collapse when the user mouses over the text area
+    textArea.addEventListener("mouseenter", function()
+    {
+        collapse("format-dropdown-items");
+        collapse("coding-dropdown-items");
+    });
+    
 
 }
 
@@ -271,8 +283,6 @@ function uploadFile()
             //Once finished, hide the indicator again
             loadingIndicator.style.visibility = "hidden";
         });
-        
-        
     }
 }
 
@@ -458,15 +468,29 @@ This function takes the ID of the dropdown items and sets their display so that 
 function dropdown(dropdownItemsId)
 {
     //Get dropdown
-    var dropdownItems = document.getElementById(dropdownItemsId);
+    var dropdownItem = document.getElementById(dropdownItemsId);
 
     //Check current state of dropdown to toggle it
-    if (dropdownItems.style.display === "none")
+    if (dropdownItem.style.display === "none")
     {
-        dropdownItems.style.display = "block";
+        dropdownItem.style.display = "block";
     }
     else
     {
-        dropdownItems.style.display = "none";
+        dropdownItem.style.display = "none";
+    }
+}
+
+/*
+Closes all dropdowns
+*/
+function collapse(dropdownItemsId)
+{
+    //Get dropdown
+    var dropdownItem = document.getElementById(dropdownItemsId);
+
+    if (dropdownItem.style.display !== "none")
+    {
+        dropdownItem.style.display = "none";
     }
 }
