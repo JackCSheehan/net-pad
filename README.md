@@ -25,6 +25,8 @@ Net Pad can automatically complete opening double quotes, single quotes, parenth
 
 ## Customizable Formatting
 
+![formatting-screenshot](https://user-images.githubusercontent.com/31775474/81769730-fccb8d80-94a3-11ea-9aba-d921cc16d042.png)
+
 ## Keep Formatting Across Tabs -- and Share Your Formatting With Others
 
 Use Net Pad here: https://jackcsheehan.github.io/net-pad/index.html
