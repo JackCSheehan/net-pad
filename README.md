@@ -1,5 +1,6 @@
 # Net Pad
 A simple online text editor written in HTML, CSS, and JS.
+https://jackcsheehan.github.io/net-pad/index.html
 
 # Features
 ## Simple Text Editing
@@ -28,9 +29,8 @@ Net Pad can automatically complete opening double quotes, single quotes, parenth
 ![formatting-screenshot](https://user-images.githubusercontent.com/31775474/81769730-fccb8d80-94a3-11ea-9aba-d921cc16d042.png)
 
 ## Keep Formatting Across Tabs -- and Share Your Formatting With Others
+Press the '+' button to create a new tab and notice that your formatting changes transfer over! Copy the link of this new tab and you can share your custom formatting with anyone.
 
 Use Net Pad here: https://jackcsheehan.github.io/net-pad/index.html
 
-
 Icons made by Freepik at www.flaticon.com.
-Other icons from the Material Design Icons library.
