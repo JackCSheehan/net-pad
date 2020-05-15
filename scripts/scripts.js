@@ -12,7 +12,7 @@ const SMALLEST_FONT = 1;
 const LARGEST_FONT = 200;
 
 //Define static map used to auto fill code separators
-const SEPARATOR_CHARACTERS = [["(", ")"], ["[", "]"], ["{", "}"], ["<", ">"], ["\"", "\""], ["/*", "*/"], ["'", "'"]];
+const SEPARATOR_CHARACTERS = [["(", ")"], ["[", "]"], ["{", "}"], ["<", ">"], ["\"", "\""], ["'", "'"]];
 const SEPARATOR_MAP = new Map(SEPARATOR_CHARACTERS);
 
 /*
@@ -117,7 +117,8 @@ function initialize()
         collapse("coding-dropdown-items");
     });
     
-
+    //If the document name input box is empty, set the title and input box value back to the default
+    documentNameInput.addEventListener("change", setDefaultDocumentName);
 }
 
 /*
@@ -492,5 +493,22 @@ function collapse(dropdownItemsId)
     if (dropdownItem.style.display !== "none")
     {
         dropdownItem.style.display = "none";
+    }
+}
+
+/*
+Sets the value of the document input box to the default value and sets the page title to the default value if the document name
+input box is empty
+*/
+function setDefaultDocumentName()
+{
+    //Get the document name input box
+    var documentNameInput = document.getElementById("document-name-input");
+
+    //Check to see if the input box is empty
+    if (documentNameInput.value === "")
+    {
+        documentNameInput.value = DEFAULT_DOCUMENT_NAME;
+        window.title = DEFAULT_DOCUMENT_NAME;
     }
 }
